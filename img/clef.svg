@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="64"
+   width="64"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.1 "
+   sodipodi:docname="clef.svg"
+   inkscape:export-filename="C:\Users\spadija\Documents\NetBeansProjects\UserJS Extensions\Song Notifier\img\icon.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1120"
+     inkscape:window-height="716"
+     id="namedview36"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="6.1650191"
+     inkscape:cx="35.861317"
+     inkscape:cy="27.987098"
+     inkscape:window-x="41"
+     inkscape:window-y="40"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title></dc:title>
+        <dc:description>email adress</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li />
+            <rdf:li>symbol</rdf:li>
+            <rdf:li>musicsym</rdf:li>
+            <rdf:li>signs_and_symbols</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://www.openclipart.org">
+            <dc:title>Yves Aubry (yvounet)</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Yves Aubry (yvounet)</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Yves Aubry (yvounet)</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:date />
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:language>en</dc:language>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6">
+    <marker
+       id="ArrowEnd"
+       markerHeight="3"
+       markerUnits="strokeWidth"
+       markerWidth="4"
+       orient="auto"
+       refX="0"
+       refY="5"
+       viewBox="0 0 10 10">
+      <path
+         d="M 0,0 10,5 0,10 z"
+         id="path9"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       id="ArrowStart"
+       markerHeight="3"
+       markerUnits="strokeWidth"
+       markerWidth="4"
+       orient="auto"
+       refX="10"
+       refY="5"
+       viewBox="0 0 10 10">
+      <path
+         d="M 10,0 0,5 10,10 z"
+         id="path12"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <path
+     inkscape:connector-curvature="0"
+     id="path16"
+     style="fill:none;stroke:#636363;stroke-width:1.18424475"
+     d="m 12.592123,47.392122 45.815755,0.01575" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path18"
+     style="fill:none;stroke:#636363;stroke-width:1.18385279"
+     d="m 12.591926,39.391926 45.816148,0.01615" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path20"
+     style="fill:none;stroke:#636363;stroke-width:1.18380821"
+     d="m 12.591904,31.391899 45.816192,0.01619" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path22"
+     style="fill:none;stroke:#636363;stroke-width:1.18374848"
+     d="m 12.591874,23.391876 45.816252,0.01625" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path24"
+     style="fill:none;stroke:#636363;stroke-width:1.10478961"
+     d="m 12.552395,15.447606 45.895211,-0.09521" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path30"
+     style="fill:#000000;stroke:none"
+     d="m 31.970336,46.69645 0.98729,0 0,0.960606 -0.98729,0 0,-0.960606 z" />
+  <g
+     id="g3022"
+     transform="translate(0.79999988,0)"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90">
+    <g
+       transform="translate(-0.141332,0.1374161)"
+       id="g3017">
+      <path
+         inkscape:connector-curvature="0"
+         id="path26"
+         style="fill:#000000;stroke:#000000;stroke-width:0.42693609"
+         d="m 25.35748,59.293622 c 0.0094,3.616149 8.033187,3.156765 8.006503,-2.806251 0.01059,-5.80932 -7.665467,-38.315591 -7.751153,-44.532165 -0.09025,-4.9340153 2.613831,-10.4640033 4.930429,-10.4038352 1.835228,0.060198 3.559623,4.2150974 3.550145,9.3867882 0.139352,16.724282 -14.507631,15.643237 -14.507631,27.071505 0,7.386761 6.132254,9.337859 9.198381,9.337859 10.383001,-0.06959 8.640846,-12.543295 2.020817,-12.543295 -3.902324,-0.139437 -7.316873,5.15662 -2.160211,9.54663 -8.710564,-3.832517 -4.041676,-13.100531 2.857056,-13.17025 9.198381,0.06963 10.801142,16.933265 -2.717662,17.002856 -8.083437,0.07002 -11.497986,-7.037997 -11.42831,-12.612757 0,-10.731424 15.818409,-16.933354 15.609381,-25.9923398 0,-5.7141128 -5.923226,-3.135803 -6.062578,6.0625778 0.139395,5.714156 7.525944,35.887563 7.456268,40.556536 0,9.616309 -12.334184,6.480463 -12.334184,1.602718 0.06968,-6.968451 7.247198,-2.021115 5.017311,-1.811916 -1.742156,3.066255 -1.684562,3.305339 -1.684562,3.305339 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path28"
+         style="fill:#000000;stroke:#000000;stroke-width:0.42693609"
+         d="m 28.699322,56.264088 c 0,1.61766 -1.349161,2.930916 -3.011351,2.930916 -1.66219,0 -3.011394,-1.313256 -3.011394,-2.930916 0,-1.618088 1.349204,-2.931344 3.011394,-2.931344 1.66219,0 3.011351,1.313256 3.011351,2.931344 z" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path32"
+         style="fill:#000000;stroke:none"
+         d="m 29.088517,31.62048 1.254125,0 0,3.121971 -1.254125,0 0,-3.121971 z" />
+    </g>
+    <path
+       d="m 26.865077,20.024554 0.594722,-0.102678 0.836922,5.523315 -0.594721,0.102678 -0.836923,-5.523315 z"
+       style="fill:#000000;stroke:none"
+       id="path34"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
