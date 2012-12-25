@@ -1,10 +1,14 @@
 SongNotifier is an Opera extension that displays notifications when a new song
 plays in Internet radio services. It currently works with:
 
+- Google Music
 - Grooveshark
+- iHeartRadio
+- Jamendo
 - Pandora
-- RadioParadise
 - Rdio
+- RadioParadise
+- VK
 
 It is usually simple to add support for another service provided that it is does
 not exist entirely within a plugin like Flash. If you would like to see support

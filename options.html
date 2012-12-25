@@ -2,27 +2,34 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="options.css">
-	<script src="script/debug.js"></script>
-	<script src="script/natcompare.js"></script>
-	<script src="script/storage.js"></script>
-	<script src="script/color.js"></script>
-	<script src="script/options.js"></script>
 	<title id="title">Song Notifier Options</title>
+
+	<link rel="stylesheet" href="css/options.css">
+	<script src="js/natcompare.js"></script>
+	<script src="js/storage.js"></script>
+	<script src="js/color.js"></script>
+	<script src="js/options.js"></script>
+	<script src="js/options_page.js"></script>
+	<script src="js/default_settings.js"></script>
+
+	<script>
+		OptionsPage.init(settings);
+	</script>
 </head>
 <body>
-	<header>
-		<img src="img/icon.png">
-		<div class="right">
-			<h1><span id="widget-name">Song Notifier</span> <span class="version" id="widget-version"></span></h1>
-			<h2><span data-loc="by">By</span> <span id="widget-author">Joel Spadin</span></h2>
-		</div>
-		<div class="clear"></div>
-	</header>
+<div id="viewport">
+	<div id="topbar"></div>
+	<div id="content">
+		<header>
+			<img src="img/icon.png">
+			<div class="right">
+				<h1><span id="widget-name">Song Notifier</span> <span id="widget-version"></span></h1>
+				<h2><span>By</span> <span id="widget-author">Joel Spadin</span></h2>
+			</div>
+			<div class="clear"></div>
+		</header>
 
-	<section>
-		<fieldset>
-			
+		<fieldset>	
 			<div id="notifier" class="notifier">
 				<img src="img/album.png">
 				<div class="info">
@@ -42,13 +49,6 @@
 				<button class="posbutton notifier" id="botright" data-value="6"></button>
 			</p>
 			
-			<form style="display: none">
-				<input type="radio" name="position" value="9"> Top Left
-				<input type="radio" name="position" value="3"> Top Right
-				<input type="radio" name="position" value="12"> Bottom Left
-				<input type="radio" name="position" value="6"> Bottom Right
-			</form>
-			
 			<p>
 				<input name="show_art" id="show_art" type="checkbox">
 				<label for="show_art">Show album art</label>
@@ -66,257 +66,50 @@
 				<label for="hide_on_source">Do not show notification on music player page</label>
 			</p>
 			<p>
-				<input name="duration" id="duration" type="number" min="1" step="1" data-multiplier="1000">
-				<button class="default">Default</button>
+				<input name="duration" id="duration" type="number" min="0.1" step="0.1"
+					data-savefunc="secondsToMs" data-loadfunc="msToSeconds">
+				<button data-resets="duration">Default</button>
 				<label for="duration">Notification duration (seconds)</label>
 			</p>
 			
 			<div class="colors">
 				<p>
 					<input name="bkg_color" id="bkg_color" type="color">
-					<button class="default">Default</button>
+					<button data-resets="bkg_color">Default</button>
 					<label for="bkg_color">Notifier background color</label>
 				</p>
 				<p>
 					<input name="bkg_alpha" id="bkg_alpha" type="number" min="0" max="255">
-					<button class="default">Default</button>
+					<button data-resets="bkg_alpha">Default</button>
 					<label for="bkg_alpha">Notifier background opacity</label>
 				</p>
 				<p>
 					<input name="text_color" id="text_color" type="color">
-					<button class="default">Default</button>
+					<button data-resets="text_color">Default</button>
 					<label for="text_color">Notifier text color</label>
 				</p>
 				<p>
 					<input name="text_alpha" id="text_alpha" type="number" min="0" max="255">
-					<button class="default">Default</button>
+					<button data-resets="text_alpha">Default</button>
 					<label for="text_alpha">Notifier text opacity</label>
 				</p>
 			</div>
-
 		</fieldset>
-		
-	</section>
 
-	<section id="options_debug" style="display: none">
-		<h3>Debug (press Shift+~ to hide)</h3>
-		<h3>widget.preferences</h3>
-		<div id="storage_list"></div>
-	</section>
+		<div id="options_debug" style="display: none">
+			<h3>Debug (press ~ to hide)</h3>
+			<h3>widget.preferences</h3>
+			<div id="storage_list"></div>
+		</div>
 
-	<footer>
-		<p data-loc="footer">
-			Song Notifier is &copy; 2011 <a href="http://chaosinacan.com">Joel Spadin</a>
-		</p>
-	</footer>
-	
-<script>
-var $ = function(sel) {
-	return document.querySelector(sel);
-}
+		<footer>
+			<p>
+				Song Notifier is &copy; 2011&ndash;2012 <a href="http://chaosinacan.com">Joel Spadin</a>
+			</p>
+		</footer>
 
-
-
-
-addEventListener('DOMContentLoaded', function() {
-	
-	// list of FORM elements
-	var skip      = hash('hidden,submit,image,reset,button');
-	var checkable = hash('checkbox,radio');
-	var radio     = hash('radio');
-	
-	// get the FORM elements
-	var formElements = document.querySelectorAll('input,select');
-
-	// string to hash
-	function hash(str, glue) {
-		var obj = {};
-		var tmp = str.split(glue || ',');
-
-		while( tmp.length ) 
-			obj[ tmp.pop() ] = true;
-
-		return obj;
-	}
-
-	// walk the elements and apply a callback method to them
-	function walkElements(callback)
-	{
-		var obj = [];
-		for(var i = 0, element = null; element = formElements[i]; i++)
-		{
-			// skip the element if it has no name or is of a type with no useful value
-			var type = element.type.toLowerCase();
-			var name = element.name || '';
-			if(skip[type] === true || name == '' || element.hasAttribute('data-nosave')) 
-				continue;
-
-			var tmp = callback(element, name, type);
-			if(tmp != null)
-				obj.push(tmp);
-		}
-		return obj;
-	}
-
-	// sets the value of an element to its saved value
-	function updateElement(element, name, type) {
-		var name = name || element.name || '';
-		var type = type || element.type.toLowerCase();
-		var value = settings.get(name);
-		if(checkable[type] === true) {
-			if (radio[type] === true)
-				element.checked = element.value == value;
-			else
-				element.checked = value;
-		}
-		else {
-			if (element.dataset.multiplier)
-				value /= parseFloat(element.dataset.multiplier);
-			element.value = value;
-		}
-	}
-	
-	// save the new value of an element
-	function elementChanged(e) {
-		var element = e.currentTarget || e;
-		var type = element.type.toLowerCase();
-		var name = element.name || '';
-		var value;
-		if (checkable[type] === true)
-			value = radio[type] ? dom.getRadioValue(element) : element.checked;
-		else
-			value = element.value;
-		
-		if (element.min && parseInt(value) < parseInt(element.min)) 
-			value = element.value = element.min;
-		if (element.max && parseInt(value) > parseInt(element.max)) 
-			value = element.value = element.max;
-		
-		if (element.dataset.multiplier)
-			value *= parseFloat(element.dataset.multiplier);
-		
-		settings.set(name, value);	
-	}
-	
-	
-	// set the textContent of an element
-	function setText(id, txt) {
-		var e = document.getElementById(id);
-		if(e) 
-			e.textContent = txt;
-	}
-
-
-	// populate the title, name, author, ...
-	//setText('widget-title', widget.name);
-	setText('widget-name', widget.name);
-	setText('widget-author', widget.author);
-	setText('widget-version', widget.version);
-	
-	
-	
-	// walk and set the elements accordingly to the storage
-	walkElements(function(element, name, type) {
-		updateElement(element, name, type);
-
-		// If an element has a Default button, configure it
-		var defaultBtn = element.nextElementSibling;
-		if (defaultBtn && defaultBtn.tagName == 'BUTTON') {
-			defaultBtn.addEventListener('click', function(e) {
-				settings.reset(name);
-				updateElement(element, name, type);
-				updateNotifier();
-			}, false);
-		}
-
-		// listen to changes
-		element.addEventListener('change', elementChanged, true);
-	});
-
-
-	var notifier = $('#notifier');
-	var posbuttons = document.querySelectorAll('.posbutton');
-	
-	for (var i = 0; i < posbuttons.length; i++) {
-		posbuttons[i].innerHTML = notifier.innerHTML;
-		var value = posbuttons[i].dataset.value;
-		if (settings.get('position') == value)
-			posbuttons[i].addClass('selected');
-		
-		posbuttons[i].addEventListener('click', function(e) {
-			for (var j = 0; j < posbuttons.length; j++)
-				posbuttons[j].removeClass('selected');
-			e.target.addClass('selected');
-			settings.set('position', e.target.dataset.value);
-		}, false);
-	}
-	
-	
-	
-	var notifierStyle = dom.make('style');
-	document.head.appendChild(notifierStyle);
-	
-	function updateNotifier() {
-		var ct = $('#positionbox');
-		
-		if (settings.get('show_art'))
-			ct.removeClass('noart');
-		else
-			ct.addClass('noart');
-		
-		if (settings.get('show_artist'))
-			ct.removeClass('noartist');
-		else
-			ct.addClass('noartist');
-		
-		if (settings.get('show_album'))
-			ct.removeClass('noalbum');
-		else
-			ct.addClass('noalbum');
-		
-		var colors = getNotifierColors();
-		notifierStyle.innerHTML = '.notifier {' + 
-			'color:' + colors.color + ';' +
-			'background-color:' + colors.backgroundColor + ';';
-	}
-	
-	var items = ['#show_art', '#show_artist', '#show_album', 
-		'#bkg_color', '#bkg_alpha', '#text_color', '#text_alpha'];
-	for (var i = 0; i < items.length; i++)
-		$(items[i]).addEventListener('change', updateNotifier, false);
-	
-	updateNotifier();
-	
-}, false);
-
-
-addEventListener('keypress', function(e) {
-
-	// Press ~ to list storage
-	if (e.keyCode == 96) {
-		var container = $('#storage_list');
-		container.innerHTML = '';
-		
-		var list = [];
-		for (var key in widget.preferences)
-			list.push(key);
-
-		list.sort(natcompare);
-		for (var i = 0; i < list.length; i++) {
-			var p = document.createElement('p');
-			p.innerHTML = '<strong>' + list[i] + '</strong> = ' + widget.preferences[list[i]];
-			container.appendChild(p);
-		}
-		
-		$('#options_debug').style.display = 'block';
-	}
-	// Press Shift + ~ to hide storage
-	else if (e.keyCode == 126) {
-		$('#options_debug').style.display = 'none';
-	}
-}, false);
-
-</script>
+	</div><!-- #content -->
+</div><!-- #viewport -->
 	
 </body>
 </html>

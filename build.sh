@@ -1,6 +1,16 @@
 
 name="SongNotifier"
 
-rm -f ./$name.oex
-zip -r ./$name.zip ./config.xml ./includes/* ./script/* ./img/* ./*.html ./*.css ./*.js
-mv ./$name.zip ./$name.oex
+inc="./config.xml"
+inc="$inc ./*.html"
+inc="$inc `find -wholename "./css/*.css"`"
+inc="$inc `find -wholename "./img/*.gif"`"
+inc="$inc `find -wholename "./img/*.jpg"`"
+inc="$inc `find -wholename "./img/*.png"`"
+inc="$inc `find -wholename "./includes/*.js"`"
+inc="$inc `find -wholename "./js/*.js"`"
+
+rm -f $name.oex
+zip -r $name.zip $inc
+
+mv $name.zip $name.oex

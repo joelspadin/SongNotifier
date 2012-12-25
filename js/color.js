@@ -4,11 +4,11 @@ this.getNotifierColors = function(data) {
 	data = data || {};
 	var alphaScale = 1;
 	data.backgroundColor = rgba(
-		settings.get('bkg_color'), 
-		settings.get('bkg_alpha') * alphaScale);
+		settings.bkg_color, 
+		settings.bkg_alpha * alphaScale);
 	data.color = rgba(
-		settings.get('text_color'), 
-		settings.get('text_alpha') * alphaScale);
+		settings.text_color, 
+		settings.text_alpha * alphaScale);
 	return data;
 }
 
